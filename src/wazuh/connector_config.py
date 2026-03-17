@@ -120,6 +120,26 @@ class ConnectorConfig(ConfigBase):
 
     .. seealso:: See :ref:`when to run <when-to-run>` for details.
     """
+
+    auto_update: bool = False
+    """
+    Whether the connector should automatically update its registration in OpenCTI
+
+    Required by newer OpenCTI connector schemas. If omitted, registration may fail
+    with validation errors.
+    """
+
+    enrichment_resolution: str = "entity"
+    """
+    Defines how enrichment results are attached in OpenCTI
+
+    Common values:
+    - "entity": attach enrichment to the entity itself
+    - "observable": attach enrichment to observables
+
+    This field is mandatory in recent OpenCTI versions.
+    """
+
     log_level: LogLevel = LogLevel.Warning
     """
     Log level
